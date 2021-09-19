@@ -9,13 +9,13 @@
             </div>
         @endif --}}
 
-        <form id="frmexercicio" name="frmexercicio" action="{{ route('exercicio.store') }}" method="POST">
+        <form id="frmexercicio" name="frmexercicio" action="{{ route('exercicio.store') }}" method="POST" >
         @csrf
 
-         
+
         <div class="form-group col-6">
           <label for="periodo">Periodo:</label>
-          <input type="text" class="form-control {{ $errors->has('periodo') ? 'is-invalid' : '' }}" id="periodo" name="periodo" placeholder="Informe o período">
+          <input type="date" class="form-control {{ $errors->has('periodo') ? 'is-invalid' : '' }}" id="periodo" name="periodo" placeholder="Informe o período">
             @if ($errors->has('nome'))
             <div class="invalid-feedback">
                 {{$errors->first('periodo', 'Atenção esse campo é obrigatório')}}
@@ -25,7 +25,7 @@
 
         <div class="form- col-6">
             <label for="kmatual">Km atual:</label>
-            <input type="text" class="form-control {{ $errors->has('kmatual') ? 'is-invalid' : '' }} " id="kmatual" name="kmatual"  placeholder="Informe a quilometragem atual">
+            <input type="number" class="form-control {{ $errors->has('kmatual') ? 'is-invalid' : '' }} " id="kmatual" name="kmatual"  placeholder="Informe a quilometragem atual">
             @if ($errors->has('nome'))
             <div class="invalid-feedback">
                 {{$errors->first('kmatual', 'Atenção esse campo é obrigatório')}}
@@ -33,20 +33,10 @@
             @endif
         </div>
 
-        <!-- <div class="form-group col-6">
-          <label for="kmtotal">Km total:</label>
-          <input type="text" class="form-control {{ $errors->has('kmtotal') ? 'is-invalid' : '' }}" id="kmtotal" name="kmtotal" placeholder="Informe a quilometragem total">
-            @if ($errors->has('nome'))
-            <div class="invalid-feedback">
-                {{$errors->first('kmtotal', 'Atenção esse campo é obrigatório')}}
-            </div>
-            @endif
-        </div> -->
-
 
         <div class="form-group col-6">
           <label for="tempo">Tempo:</label>
-          <input type="text" class="form-control {{ $errors->has('tempo') ? 'is-invalid' : '' }}" id="tempo" name="tempo" placeholder="Informe a tempo em minutos">
+          <input type="number" class="form-control {{ $errors->has('tempo') ? 'is-invalid' : '' }}" id="tempo" name="tempo" placeholder="Informe a tempo em minutos">
             @if ($errors->has('nome'))
             <div class="invalid-feedback">
                 {{$errors->first('tempo', 'Atenção esse campo é obrigatório')}}
