@@ -1,0 +1,111 @@
+
+body {
+    background:		#b6b8b6;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#logo {
+    float:left;
+    padding: auto;
+    margin-top: 2px 0 2px 0;
+}
+
+#menu ul{
+    list-style: none;
+    padding: 0;
+    background-color: rgb(10, 10, 10);
+}
+
+#menu ul li {
+    display: inline;
+}
+
+#menu ul li a{
+    margin: 0px 20px 0px 20px;
+    color:#fff;
+    text-decoration: none;
+    padding: 30px;
+    display: inline-block;
+    transition: background .4s;
+}
+
+#menu ul li a:hover{
+    background-color: rgb(9, 80, 2);
+}
+
+#menu ul li:last-child a {
+    margin: 0px 0px 0px 0px;
+    float: right;
+    background-color: #25bb00;
+}
+
+
+#divBusca{
+    
+    background-color:#E0EEEE;
+    border:solid 2px #000000;
+    border-radius:10px;
+    width:300px;
+    height:32px;
+   
+    
+  }
+  
+  #txtBusca{
+    
+    float:left;
+    background-color:transparent;
+    padding-left:46px;
+    font-size:18px;
+    border:none;
+    height:32px;
+    width:191px;
+  }
+  
+  #btnBusca{
+
+    border:none;
+    float:left;
+    height:28px;
+    border-radius:1 7px 7px 0;
+    width:75px;
+    font-weight:bold;
+    background:#25bb00;
+    position: absolute;
+  
+
+  }
+  
+  #divBusca img{
+    
+    float:left;
+    height:30px;
+    width:30px;
+    
+  }
+
+tr,td {
+  border-radius:5px;
+  background:#fafafa;
+  width:2000px;
+  height:30px;
+}
+
+button {
+  background: #25bb00; 
+  border-radius: 6px;
+  padding: 15px;
+  cursor: pointer;
+  color: #fff;
+   border: none; 
+   font-size: 16px;
+}
+

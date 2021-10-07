@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'sobrenome' => ['required', 'string', 'max:255'],
             'telefone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cpf' => ['required', 'string', 'max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -71,6 +72,7 @@ class RegisterController extends Controller
             'sobrenome' => $data['sobrenome'],
             'telefone' => $data['telefone'],
             'email' => $data['email'],
+            'cpf' => $data['cpf'],
             'password' => Hash::make($data['password']),
         ]);
     }
