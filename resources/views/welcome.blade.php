@@ -13,7 +13,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: #264527;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -81,20 +81,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Projeto TCC - Energia Renovavel
+                    Projeto TCC - Energia Renovável em Academias
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div>
+                    <h4 align=center>
+                         Bem vindo a página inicial do nosso projeto <strong>E.R.A</strong>
+                    </h4>
                 </div>
             </div>
         </div>
     </body>
 </html>
+

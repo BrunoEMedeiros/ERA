@@ -1,7 +1,15 @@
 <?php
 
-use App\Http\Controllers\Exercicios;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExerciciosController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RankingsController;
+use App\Http\Controllers\SobreController;
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\PremiacaoController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
@@ -11,58 +19,48 @@ Route::get('/', function () {
 
 });
 
-    Auth::routes();
 
-    Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
-
-//rota que redireciona para um controller
-
-Route::prefix('/exercicio')->group(function()
+Route::prefix('/exercicios')->group(function()
 {
-    Route::get('/index', [Exercicios::class, 'index'])->name('exercicios.index');
+    Route::get('/', [ExerciciosController::class, 'index'])->name('exercicios');
 
-    Route::get('/create', [Exercicios::class, 'create'])->name('exercicios.create');
+    Route::get('/create', [ExerciciosController::class, 'create'])->name('exercicios.create');
 
-    Route::post('/store', [Exercicios::class, 'store'])->name('exercicios.store');
+    Route::post('/store', [ExerciciosController::class, 'store'])->name('exercicios.store');
 
-    Route::get('/edit/{id}', [Exercicios::class, 'edit'])->name('exercicios.edit');
+    Route::get('/edit/{id}', [ExerciciosController::class, 'edit'])->name('exercicios.edit');
 
-    Route::put('/update/{id}', [Exercicios::class, 'update'])->name('exercicios.update');
+    Route::put('/update/{id}', [ExerciciosController::class, 'update'])->name('exercicios.update');
 
-    Route::get('/show/{id}', [Exercicios::class, 'show'])->name('exercicios.show');
+    Route::get('/show/{id}', [ExerciciosController::class, 'show'])->name('exercicios.show');
 
-    Route::delete('/destroy/{id}', [Exercicios::class, 'destroy'])->name('exercicios.destroy');
+    Route::delete('/destroy/{id}', [ExerciciosController::class, 'delete'])->name('exercicios.delete');
+
+});
+
+Route::get('/sobre', [SobreController::class, 'index'])->name('sobre');
+
+Route::get('/usuario', [UsuarioController::class, 'index'])->name('usuario');
+
+Route::get('/ranking', [RankingsController::class, 'index'])->name('ranking');
+
+Route::get('/premiacao', function () {
+    return view('premiacao');
+});
+
+Route::get('/contato', function () {
+    return view('contato');
+});
+
+Route::get('/perfil', function () {
+    return view('perfil');
 });
 
 
-Route::prefix('/ranking')->group(function()
-{
-    Route::get('/show', [Rankings::class, 'show'])->name('rankings.show');
-});
 
 
-Route::prefix('/perfil')->group(function()
-{
-    Route::get('/show', [Perfis::class, 'show'])->name('perfis.show');
-});
 
-
-Route::prefix('/sobre')->group(function()
-{
-    Route::get('/index', [Sobre::class, 'index'])->name('sobre.index');
-});
-
-
-Route::prefix('/contato')->group(function()
-{
-    Route::get('/index', [Contatos::class, 'index'])->name('Contatos.index');
-});
-
-
-Route::prefix('/premiacao')->group(function()
-{
-    Route::get('/index', [Premiacoes::class, 'index'])->name('premiacoes.index');
-});

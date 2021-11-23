@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Painel de Controle') }}</div>
+                <div class="card-header">{{ __('Página de Log off') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -20,6 +20,7 @@
         </div>
     </div>
     <hr>
-    <h1>Página inicial do projeto</h1>
+    <br>
+    <h1 align=center>Utilize essa página para deslogar do nosso sistema</h1>
 </div>
 @endsection

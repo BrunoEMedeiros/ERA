@@ -82,6 +82,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="nivel" class="col-md-4 col-form-label text-md-right">{{ __('Nível:') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="nivel" type="number" class="form-control @error('nivel') is-invalid @enderror" name="nivel" value="{{ old('nivel') }}" required autocomplete="nivel">
+
+                                @error('cpf')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha:') }}</label>
 
                             <div class="col-md-6">

@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-<form id="frmexercicio" name="frmexercicio" action="{{ route('exercicio.update', $exercicio->id) }}" method="POST">
+<form id="frmexercicio" name="frmexercicio" action="{{ route('exercicios.update', $exercicio->id) }}" method="POST">
 @csrf
 @method('PUT')
 <div class="form-group">
@@ -17,7 +17,7 @@
 
  <div class="form-group">
  <label for="kmtotal">KmTotal</label>
- <input type="number" class="form-control" id="kmtotal"  name="kmtotal" value="{{ $exercicio->kmtotal }}">
+ <input type="number" class="form-control" id="kmtotal"  name="kmtotal" value="{{ $exercicio->kmtotal }}" disabled="">
  </div>
 
  <div class="form-group">
@@ -27,3 +27,5 @@
 
  <button type="submit" class="btn btn-primary">Submit</button>
  </form>
+
+ @endsection

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('sobrenome');
             $table->string('telefone');
             $table->string('cpf');
+            $table->string('nivel');
             $table->string('email')->unique();
 
             $table->timestamp('email_verified_at')->nullable();

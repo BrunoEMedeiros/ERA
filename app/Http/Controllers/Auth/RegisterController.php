@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +29,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function redirectTo()
+    {
+        //dd(auth()->user()->nivel);
+        $nivel = auth()->user()->nivel;
+
+        if ($nivel == 1) {
+            return 'sobre';
+        }
+        return 'exercicio';
+    }
 
     /**
      * Create a new controller instance.
@@ -54,7 +65,8 @@ class RegisterController extends Controller
             'sobrenome' => ['required', 'string', 'max:255'],
             'telefone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'cpf' => ['required', 'string', 'max:11'],
+            'cpf' => ['required', 'string', 'max:11', 'min:11'],
+            'nivel' => ['required', 'string', 'max:1', 'min:1'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -73,6 +85,7 @@ class RegisterController extends Controller
             'telefone' => $data['telefone'],
             'email' => $data['email'],
             'cpf' => $data['cpf'],
+            'nivel' => $data['nivel'],
             'password' => Hash::make($data['password']),
         ]);
     }

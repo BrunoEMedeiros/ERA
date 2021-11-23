@@ -26,7 +26,19 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+
+    //protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function redirectTo()
+    {
+        //dd(auth()->user()->nivel);
+        $nivel = auth()->user()->nivel;
+        if ($nivel == 1) {
+            return 'sobre';
+        }
+        return 'exercicios';
+    }
+
 
     /**
      * Create a new controller instance.

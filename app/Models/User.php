@@ -2,9 +2,44 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Exercicio;
 
-class User extends Model
+class User extends Authenticatable
 {
-        protected $fillable = ['name', 'sobrenome', 'telefone', 'cpf', 'email', 'email_verified_at', 'password'];
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'sobrenome', 'telefone', 'cpf', 'nivel', 'email', 'password', 'exercicio_id'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function exercicio()
+    {
+        return $this->hasOne(Exercicio::class);
+    }
 }

@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Exercicio;
-use App\User;
-
-
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 use App\Http\Requests\ExercicioRequest;
 
@@ -19,34 +16,30 @@ class ExerciciosController extends Controller
     {
 
         $exercicio = Exercicio::all();
-        $kmtotal = DB::table('exercicios')->sum('kmatual');
 
-        return view('exercicio.index', compact('exercicio' , 'kmtotal'));
+        return view('exercicio.index', compact('exercicio'));
     }
 
     public function create()
     {
-        $usuario = User::all();
-        $exercicio = Exercicio::all();
-        return view('exercicio.create', compact('exercicio','usuario'));
+        $usuarios = User::all();
+
+        return view('exercicio.create', compact('usuarios'));
 
     }
 
     public function store(ExercicioRequest $request)
     {
-
         $exercicio = new Exercicio();
 
-        //$users = DB::table('users')->get();
-
-
-        $exercicio->periodo = $request->input('periodo');
-        $exercicio->kmatual = $request->input('kmatual');
-        $exercicio->kmtotal = $request->input('kmtotal');
-        $exercicio->user_id = $request->input('user_id');
-        $exercicio->tempo = $request->input('tempo');
+        $exercicio->periodo =   $request->input('periodo');
+        $exercicio->kmatual =   $request->input('kmatual');
+        $exercicio->kmtotal =   $request->input('kmatual'); //ta passando kmatual aki pq é um novo exercicio então oq ele fez ja é atualmente o total
+        $exercicio->user_id =   $request->input('usuario');
+        $exercicio->tempo   =   $request->input('tempo');
         $exercicio->save();
-        return redirect()->route('exercicio.index', compact('exercicio'));
+        $exercicio = Exercicio::with('user')->get();
+        return redirect()->route('exercicios', compact('exercicio'));
     }
 
     public function show($id)
@@ -68,14 +61,15 @@ class ExerciciosController extends Controller
     {
         $exercicio = Exercicio::find($id);
         if(isset($exercicio)){
-        $exercicio->periodo = $request->input('periodo');
-        $exercicio->kmatual = $request->input('kmatual');
-        $exercicio->kmtotal = $request->input('kmtotal');
-        $exercicio->tempo = $request->input('tempo');
+        $exercicio->periodo =   $request->input('periodo');
+        $exercicio->kmatual =   $request->input('kmatual');
+        $exercicio->kmtotal =   ($exercicio->kmtotal + $request->input('kmatual'));
+        $exercicio->tempo   =   $request->input('tempo');
+
         $exercicio->save();
 
         }
-        return redirect()->route('exercicio.index', compact('exercicio'));
+        return redirect()->route('exercicios', compact('exercicio'));
     }
 
 
